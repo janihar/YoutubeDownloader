@@ -1,0 +1,14 @@
+.bodybg {
+    
+    -fx-background-image: url("images/clouds.jpg");
+    -fx-background-size: 100% 100%;
+    
+    
+}
+
+.mainPanelbg {
+    
+    -fx-background-image: url("images/youtube.png");
+    -fx-background-size: 100% 100%;
+    
+}

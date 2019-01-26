@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="mainPanelAnchor" prefHeight="575.0" prefWidth="970.0" style="-fx-background-image: images/youtube.png;" styleClass="mainPanelbg" stylesheets="@../styles/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.multitoolv2.MainPanelController">
+   <children>
+      <AnchorPane prefHeight="575.0" prefWidth="190.0" style="-fx-background-color: #e1e3e8;">
+         <children>
+            <Label fx:id="projectNameLabel" layoutY="14.0" text="Multitool">
+               <font>
+                  <Font name="Segoe Script" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label fx:id="youtubeDownloaderLabel" layoutX="326.0" layoutY="94.0" onMouseClicked="#youtubeDownloaderLabelClick" prefHeight="81.0" prefWidth="86.0" style="-fx-background-color: #2d5ca8;" text="           ">
+         <tooltip>
+            <Tooltip fx:id="youtubeToolTip" text="Youtube Downloader" />
+         </tooltip>
+      </Label>
+   </children>
+</AnchorPane>
