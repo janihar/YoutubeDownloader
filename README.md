@@ -1,4 +1,5 @@
 # YoutubeDownloader (DEMO : https://www.youtube.com/watch?v=UA1YvEqZhPA)
+I did this project because I wanted to learn how youtube API works as well as downloading files with JAVA. Plus there is quite many sites with malware 
 Simple youtube downloader with GUI to search and download video file only. You are not able to download every single video there is, because
 this version do not include cipher algorithm. It took a while reverse youtube.. Cheers to this guy (https://tyrrrz.me/Blog/Reverse-engineering-YouTube)
 It explained very well how youtube works. I basically have the idea how I would break cipher of the videos but the part I cannot catch is 
