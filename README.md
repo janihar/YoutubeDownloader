@@ -24,4 +24,4 @@ Things to develop/fix:
 
 - A bug with filedirectory chooser. Currently if you click rapidly the place you want to put your file it freezes.
 
-- Also there is tiny change that downloadable link is incorrect, because some incorrect use of regular expressions.
+- Also there is tiny change that downloadable link is corrupted, because some incorrect use of regular expressions.
