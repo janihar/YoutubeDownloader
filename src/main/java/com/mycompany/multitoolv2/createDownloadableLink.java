@@ -264,11 +264,17 @@ public class createDownloadableLink {
         
         System.out.println(link);
         
-        String parsedLink = link;
+        String replacer = link.replace(",", "&");
+        
+        replacer = replacer.replace(";", "&");
+        
+        System.out.println(replacer);
+        
+        String parsedLink ;
         //URL
         String regexUrl = Pattern.quote("url=") + "(.*?)" + Pattern.quote("?");
         Pattern p = Pattern.compile(regexUrl);
-        Matcher m = p.matcher(link);
+        Matcher m = p.matcher(replacer);
     m.find();
     System.out.println(m.group().substring(4));
     setHttpsplusVideo(m.group().substring(4)); //deleting & char from output
@@ -276,7 +282,7 @@ public class createDownloadableLink {
     //dur
     String regexDur = Pattern.quote("dur=") + "(.*?)" + Pattern.quote("&");
         p = Pattern.compile(regexDur);
-        m = p.matcher(link);
+        m = p.matcher(replacer);
     m.find();
     System.out.println(m.group());
     setDur(m.group().substring(0, m.group().length()- 1)); //deleting & char from output
@@ -284,16 +290,16 @@ public class createDownloadableLink {
     //CLEN
     String regexClen = Pattern.quote("&clen=") + "(.*?)" + Pattern.quote("&");
         p = Pattern.compile(regexClen);
-        m = p.matcher(link);
+        m = p.matcher(replacer);
     m.find();
-    System.out.println(m.group());
+
     setClen(m.group().substring(1, m.group().length()- 1)); //deleting & char from output
 
 
  //Source
     String regexSource = Pattern.quote("source=") + "(.*?)" + Pattern.quote("&") ;
         p = Pattern.compile(regexSource);
-        m = p.matcher(link);
+        m = p.matcher(replacer);
     m.find();
     System.out.println(m.group().substring(0, m.group().length()- 1));
     setSource(m.group().substring(0, m.group().length()- 1)); //deleting & char from output
@@ -301,7 +307,7 @@ public class createDownloadableLink {
     //Key
     String regexKey = Pattern.quote("key=") + "(.*?)" + Pattern.quote("&") ;
         p = Pattern.compile(regexKey);
-        m = p.matcher(link);
+        m = p.matcher(replacer);
     m.find();
     System.out.println(m.group().substring(0, m.group().length()- 1));
     setKey(m.group().substring(0, m.group().length()- 1)); //deleting & char from output
@@ -309,15 +315,15 @@ public class createDownloadableLink {
     //Ratebypass
     String regexRatebypass = Pattern.quote("ratebypass=") + "(.*?)" + Pattern.quote("&") ;
         p = Pattern.compile(regexRatebypass);
-        m = p.matcher(link);
+        m = p.matcher(replacer);
     m.find();
     System.out.println(m.group().substring(0, m.group().length()- 1));
     setRatebypass(m.group().substring(0, m.group().length()- 1)); //deleting & char from output
     
      //lmt
-    String regexlmt = Pattern.quote("lmt=") + "(.*?)" + Pattern.quote("&") ;
+    String regexlmt = Pattern.quote("&lmt=") + "(.*?)" + Pattern.quote("&") ;
         p = Pattern.compile(regexlmt);
-        m = p.matcher(link);
+        m = p.matcher(replacer);
     m.find();
     System.out.println(m.group().substring(0, m.group().length()- 1));
     setLmt(m.group().substring(0, m.group().length()- 1)); //deleting & char from output
@@ -325,7 +331,7 @@ public class createDownloadableLink {
  //txp
     String regexTxp = Pattern.quote("txp=") + "(.*?)" + Pattern.quote("&") ;
         p = Pattern.compile(regexTxp);
-        m = p.matcher(link);
+        m = p.matcher(replacer);
     m.find();
     System.out.println(m.group().substring(0, m.group().length()- 1));
     setTxp(m.group().substring(0, m.group().length()- 1)); //deleting & char from output  
@@ -333,7 +339,7 @@ public class createDownloadableLink {
     //ipbits
     String regexIpbits = Pattern.quote("ipbits=") + "(.*?)" + Pattern.quote("&") ;//Change
         p = Pattern.compile(regexIpbits); //Change
-        m = p.matcher(link);
+        m = p.matcher(replacer);
     m.find();
     System.out.println(m.group().substring(0, m.group().length()- 1));
     setIpbits(m.group().substring(0, m.group().length()- 1)); //deleting & char from output  //Change 
@@ -341,7 +347,7 @@ public class createDownloadableLink {
     //initcwndbps
     String regexInitcwndbps = Pattern.quote("initcwndbps=") + "(.*?)" + Pattern.quote("&") ;//Change
         p = Pattern.compile(regexInitcwndbps); //Change
-        m = p.matcher(link);
+        m = p.matcher(replacer);
     m.find();
     System.out.println(m.group().substring(0, m.group().length()- 1));
     setInitcwndbps(m.group().substring(0, m.group().length()- 1)); //deleting & char from output  //Change 
@@ -349,7 +355,7 @@ public class createDownloadableLink {
     //ip
     String regexIp = Pattern.quote("&ip=") + "(.*?)" + Pattern.quote("&") ;//Change
         p = Pattern.compile(regexIp); //Change
-        m = p.matcher(link);
+        m = p.matcher(replacer);
     m.find();
     System.out.println(m.group().substring(1, m.group().length()- 1));
     setIp(m.group().substring(1, m.group().length()- 1)); //deleting & char from output  //Change 
@@ -357,7 +363,7 @@ public class createDownloadableLink {
     //mm
     String regexMm = Pattern.quote("mm=") + "(.*?)" + Pattern.quote("&") ;//Change
         p = Pattern.compile(regexMm); //Change
-        m = p.matcher(link);
+        m = p.matcher(replacer);
     m.find();
     System.out.println(m.group().substring(0, m.group().length()- 1));
     setMm(m.group().substring(0, m.group().length()- 1)); //deleting & char from output  //Change 
@@ -365,7 +371,7 @@ public class createDownloadableLink {
     //mn
     String regexMn = Pattern.quote("mn=") + "(.*?)" + Pattern.quote("&") ;//Change
         p = Pattern.compile(regexMn); //Change
-        m = p.matcher(link);
+        m = p.matcher(replacer);
     m.find();
     System.out.println(m.group().substring(0, m.group().length()- 1));
     setMn(m.group().substring(0, m.group().length()- 1)); //deleting & char from output  //Change 
@@ -373,7 +379,7 @@ public class createDownloadableLink {
     //id
     String regexId = Pattern.quote("id=") + "(.*?)" + Pattern.quote("&") ;//Change
         p = Pattern.compile(regexId); //Change
-        m = p.matcher(link);
+        m = p.matcher(replacer);
     m.find();
     System.out.println(m.group().substring(0, m.group().length()- 1));
     setId(m.group().substring(0, m.group().length()- 1)); //deleting & char from output  //Change 
@@ -381,7 +387,7 @@ public class createDownloadableLink {
     //mime
     String regexMime = Pattern.quote("mime=") + "(.*?)" + Pattern.quote("&") ;//Change
         p = Pattern.compile(regexMime); //Change
-        m = p.matcher(link);
+        m = p.matcher(replacer);
     m.find();
     System.out.println(m.group().substring(0, m.group().length()- 1));
     setMime(m.group().substring(0, m.group().length()- 1)); //deleting & char from output  //Change 
@@ -389,7 +395,7 @@ public class createDownloadableLink {
     //pl
     String regexPl = Pattern.quote("pl=") + "(.*?)" + Pattern.quote("&") ;//Change
         p = Pattern.compile(regexPl); //Change
-        m = p.matcher(link);
+        m = p.matcher(replacer);
     m.find();
     System.out.println(m.group().substring(0, m.group().length()- 1));
     setPl(m.group().substring(0, m.group().length()- 1)); //deleting & char from output  //Change 
@@ -397,7 +403,7 @@ public class createDownloadableLink {
     //fvip
     String regexFvip = Pattern.quote("fvip=") + "(.*?)" + Pattern.quote("&") ;//Change
         p = Pattern.compile(regexFvip); //Change
-        m = p.matcher(link);
+        m = p.matcher(replacer);
     m.find();
     System.out.println(m.group().substring(0, m.group().length()- 1));
     setFvip(m.group().substring(0, m.group().length()- 1)); //deleting & char from output  //Change 
@@ -405,23 +411,23 @@ public class createDownloadableLink {
     //ms
     String regexMs = Pattern.quote("&ms=") + "(.*?)" + Pattern.quote("&") ;//Change
         p = Pattern.compile(regexMs); //Change
-        m = p.matcher(link);
+        m = p.matcher(replacer);
     m.find();
     System.out.println(m.group().substring(0, m.group().length()- 1));
     setMs(m.group().substring(0, m.group().length()- 1)); //deleting & char from output  //Change
     
     //mt
-    String regexMt = Pattern.quote("mt=") + "(.*?)" + Pattern.quote("&") ;//Change
+    String regexMt = Pattern.quote("&mt=") + "(.*?)" + Pattern.quote("&") ;//Change
         p = Pattern.compile(regexMt); //Change
-        m = p.matcher(link);
+        m = p.matcher(replacer);
     m.find();
-    System.out.println(m.group().substring(0, m.group().length()- 1));
-    setMt(m.group().substring(0, m.group().length()- 1)); //deleting & char from output  //Change 
+    System.out.println(m.group().substring(1, m.group().length()- 1));
+    setMt(m.group().substring(1, m.group().length()- 1)); //deleting & char from output  //Change 
     
     //sparams
     String regexSparams = Pattern.quote("sparams=") + "(.*?)" + Pattern.quote("&") ;//Change
         p = Pattern.compile(regexSparams); //Change
-        m = p.matcher(link);
+        m = p.matcher(replacer);
     m.find();
     System.out.println(m.group().substring(0, m.group().length()- 1));
     setSparams(m.group().substring(0, m.group().length()- 1)); //deleting & char from output  //Change 
@@ -429,7 +435,7 @@ public class createDownloadableLink {
     //itag
     String regexItag = Pattern.quote("itag=") + "(.*?)" + Pattern.quote("&") ;//Change
         p = Pattern.compile(regexItag); //Change
-        m = p.matcher(link);
+        m = p.matcher(replacer);
     m.find();
     System.out.println(m.group().substring(0, m.group().length()- 1));
     setItag(m.group().substring(0, m.group().length()- 1)); //deleting & char from output  //Change 
@@ -437,7 +443,7 @@ public class createDownloadableLink {
     //signature 
     String regexSignature = Pattern.quote("signature=") + "(.*?)" + Pattern.quote("&") ;//Change
         p = Pattern.compile(regexSignature); //Change
-        m = p.matcher(link);
+        m = p.matcher(replacer);
     m.find();
     System.out.println(m.group().substring(0, m.group().length()- 1));
     setSignature(m.group().substring(0, m.group().length()- 1)); //deleting & char from output  //Change 
@@ -445,7 +451,7 @@ public class createDownloadableLink {
      //ei 
     String regexEi = Pattern.quote("ei=") + "(.*?)" + Pattern.quote("&") ;//Change
         p = Pattern.compile(regexEi); //Change
-        m = p.matcher(link);
+        m = p.matcher(replacer);
     m.find();
     System.out.println(m.group().substring(0, m.group().length()- 1));
     setEi(m.group().substring(0, m.group().length()- 1)); //deleting & char from output  //Change 
@@ -453,7 +459,7 @@ public class createDownloadableLink {
     //expire
     String regexExpire = Pattern.quote("expire=") + "(.*?)" + Pattern.quote("&") ;//Change
         p = Pattern.compile(regexExpire); //Change
-        m = p.matcher(link);
+        m = p.matcher(replacer);
     m.find();
     System.out.println(m.group().substring(0, m.group().length()- 1));
     setExpire(m.group().substring(0, m.group().length()- 1)); //deleting & char from output  //Change 

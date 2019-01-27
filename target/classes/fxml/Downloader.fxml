@@ -22,9 +22,9 @@
             <ImageView fx:id="errorPic" fitHeight="81.0" fitWidth="149.0" layoutX="33.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true" />
             <Button fx:id="saveLocationButton" layoutX="51.0" layoutY="335.0" mnemonicParsing="false" onMouseClicked="#chooseDirectory" text="Set Save Location" />
             <Button fx:id="downloadButton" layoutX="70.0" layoutY="381.0" mnemonicParsing="false" onMouseClicked="#downloadFile" text="Download" />
-            <Label fx:id="saveLocationPlace" layoutX="55.0" layoutY="257.0" maxWidth="100.0" text="Label" wrapText="true" />
+            <Label fx:id="saveLocationPlace" layoutX="55.0" layoutY="257.0" maxWidth="100.0" text="Saving Location" wrapText="true" />
             <ImageView fx:id="verifyTargetPB" fitHeight="81.0" fitWidth="109.0" layoutX="53.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="verifyTargetLabel" alignment="CENTER" contentDisplay="TOP" layoutX="55.0" layoutY="50.0" maxWidth="100.0" text="Label" textAlignment="JUSTIFY" wrapText="true" />
+            <Label fx:id="verifyTargetLabel" alignment="CENTER" contentDisplay="TOP" layoutX="55.0" layoutY="50.0" maxWidth="100.0" text="VideoText" textAlignment="JUSTIFY" wrapText="true" />
             <ProgressIndicator fx:id="downloadPercent" layoutX="94.0" layoutY="464.0" progress="0.0" />
          </children>
       </AnchorPane>
