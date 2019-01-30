@@ -288,12 +288,21 @@ public class createDownloadableLink {
     setDur(m.group().substring(0, m.group().length()- 1)); //deleting & char from output
     
     //CLEN
-    String regexClen = Pattern.quote("&clen=") + "(.*?)" + Pattern.quote("&");
-        p = Pattern.compile(regexClen);
+   
+        
+        try {
+             String regexClen = Pattern.quote("clen=") + "(.*?)" + Pattern.quote("&");
+            p = Pattern.compile(regexClen);
         m = p.matcher(replacer);
-    m.find();
+            
+            m.find();
+            setClen(m.group().substring(0, m.group().length()- 1));
+        } catch (java.lang.IllegalStateException e) {
+            setClen("");
+        }
+    
 
-    setClen(m.group().substring(1, m.group().length()- 1)); //deleting & char from output
+     //deleting & char from output
 
 
  //Source
@@ -325,16 +334,21 @@ public class createDownloadableLink {
         p = Pattern.compile(regexlmt);
         m = p.matcher(replacer);
     m.find();
-    System.out.println(m.group().substring(0, m.group().length()- 1));
-    setLmt(m.group().substring(0, m.group().length()- 1)); //deleting & char from output
+    System.out.println(m.group().substring(1, m.group().length()- 1));
+    setLmt(m.group().substring(1, m.group().length()- 1)); //deleting & char from output
     
  //txp
-    String regexTxp = Pattern.quote("txp=") + "(.*?)" + Pattern.quote("&") ;
+        try {
+             String regexTxp = Pattern.quote("txp=") + "(.*?)" + Pattern.quote("&") ;
         p = Pattern.compile(regexTxp);
         m = p.matcher(replacer);
     m.find();
     System.out.println(m.group().substring(0, m.group().length()- 1));
-    setTxp(m.group().substring(0, m.group().length()- 1)); //deleting & char from output  
+    setTxp(m.group().substring(0, m.group().length()- 1));
+        } catch (Exception e) {
+            setTxp("");
+        }
+    //deleting & char from output  
     
     //ipbits
     String regexIpbits = Pattern.quote("ipbits=") + "(.*?)" + Pattern.quote("&") ;//Change
@@ -353,12 +367,26 @@ public class createDownloadableLink {
     setInitcwndbps(m.group().substring(0, m.group().length()- 1)); //deleting & char from output  //Change 
     
     //ip
-    String regexIp = Pattern.quote("&ip=") + "(.*?)" + Pattern.quote("&") ;//Change
+   
+        try {
+            
+            String regexIp = Pattern.quote("&ip=") + "(.*?)" + Pattern.quote("&") ;//Change
         p = Pattern.compile(regexIp); //Change
         m = p.matcher(replacer);
     m.find();
     System.out.println(m.group().substring(1, m.group().length()- 1));
     setIp(m.group().substring(1, m.group().length()- 1)); //deleting & char from output  //Change 
+            
+        } catch (Exception e) {
+            
+            String regexIp = Pattern.quote("?ip=") + "(.*?)" + Pattern.quote("&") ;//Change
+        p = Pattern.compile(regexIp); //Change
+        m = p.matcher(replacer);
+    m.find();
+    System.out.println(m.group().substring(1, m.group().length()- 1));
+    setIp(m.group().substring(1, m.group().length()- 1)); //deleting & char from output  //Change 
+            
+        }
     
     //mm
     String regexMm = Pattern.quote("mm=") + "(.*?)" + Pattern.quote("&") ;//Change
@@ -409,12 +437,17 @@ public class createDownloadableLink {
     setFvip(m.group().substring(0, m.group().length()- 1)); //deleting & char from output  //Change 
     
     //ms
-    String regexMs = Pattern.quote("&ms=") + "(.*?)" + Pattern.quote("&") ;//Change
+        try {
+            String regexMs = Pattern.quote("&ms=") + "(.*?)" + Pattern.quote("&") ;//Change
         p = Pattern.compile(regexMs); //Change
         m = p.matcher(replacer);
     m.find();
-    System.out.println(m.group().substring(0, m.group().length()- 1));
-    setMs(m.group().substring(0, m.group().length()- 1)); //deleting & char from output  //Change
+    System.out.println(m.group().substring(1, m.group().length()- 1));
+    setMs(m.group().substring(1, m.group().length()- 1)); //deleting & char from output  //Change
+        } catch (java.lang.IllegalStateException e) {
+            setMs(""); //deleting & char from output  //Change
+        }
+    
     
     //mt
     String regexMt = Pattern.quote("&mt=") + "(.*?)" + Pattern.quote("&") ;//Change
@@ -441,12 +474,23 @@ public class createDownloadableLink {
     setItag(m.group().substring(0, m.group().length()- 1)); //deleting & char from output  //Change 
     
     //signature 
-    String regexSignature = Pattern.quote("signature=") + "(.*?)" + Pattern.quote("&") ;//Change
+    
+    
+        try {
+            String regexSignature = Pattern.quote("signature=") + "(.*?)" + Pattern.quote("&") ;//Change
         p = Pattern.compile(regexSignature); //Change
         m = p.matcher(replacer);
     m.find();
     System.out.println(m.group().substring(0, m.group().length()- 1));
     setSignature(m.group().substring(0, m.group().length()- 1)); //deleting & char from output  //Change 
+        } catch (Exception e) {
+             String regexSignature = Pattern.quote("s=") + "(.*?)" + Pattern.quote("&") ;//Change
+        p = Pattern.compile(regexSignature); //Change
+        m = p.matcher(replacer);
+    m.find();
+    System.out.println(m.group().substring(0, m.group().length()- 1));
+    setSignature(m.group().substring(0, m.group().length()- 1));
+        }
     
      //ei 
     String regexEi = Pattern.quote("ei=") + "(.*?)" + Pattern.quote("&") ;//Change

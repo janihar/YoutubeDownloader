@@ -15,6 +15,7 @@ import com.google.api.services.youtube.model.ResourceId;
 import com.google.api.services.youtube.model.SearchListResponse;
 import com.google.api.services.youtube.model.SearchResult;
 import com.google.api.services.youtube.model.Thumbnail;
+import java.awt.Graphics2D;
 
 import javafx.scene.control.Button; //Wrong imports will give result cant open multitool. Notes to myself
 import java.awt.image.BufferedImage;
@@ -87,6 +88,7 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.image.Image;
 import javax.swing.SwingUtilities;
 
 
@@ -179,7 +181,7 @@ public class MainPanelController extends Multitool implements Initializable {
     
     @FXML
     private void youtubeDownloaderLabelClick() {
-        
+        youtubeDownloaderLabel.setVisible(false);
         
         try {
             
@@ -188,6 +190,9 @@ public class MainPanelController extends Multitool implements Initializable {
                 Stage stage = new Stage(); // Creating new Stage
                 Stage current = (Stage) mainPanelAnchor.getScene().getWindow(); // Get the current window by using mainPanelAnchor ID to verify the specific stage.
                 stage.setTitle("YoutubeDownloader");
+                stage.getIcons().add(new Image(MainPanelController.class.getResourceAsStream("/images/youtube.png")));
+                stage.setResizable(false);
+                stage.sizeToScene();
                 current.hide(); // Hide the curren stage window
                 stage.setScene(new Scene(root)); // Scene will become Main_Panel
                 stage.show(); // Open new stage window
@@ -286,7 +291,7 @@ while(ma.find()){
    String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36";
    File outputDir = new File(outdir,"info"); //I have to download videoinfo package from https://www.youtube.com/get_video_info?video_id="+example +"&hl=en",outputDir. There is the things I need to be able download youtubestream
    String extension = getExtension(format);
-   downloadWithHttpClient(userAgent, "https://www.youtube.com/get_video_info?video_id="+videoID +"&hl=en",outputDir);
+   downloadWithHttpClient(userAgent, "https://www.youtube.com/get_video_info?video_id="+ videoID +"&el=detailpage&hl=en",outputDir);
 
    play(verifyTargetLabel.getText(),saveLocationPlace.getText(),videoId, format, encoding, userAgent, outputDir, extension);
 
@@ -308,7 +313,7 @@ while(ma.find()){
   List<NameValuePair> qparams = new ArrayList<NameValuePair>();
   qparams.add(new BasicNameValuePair("video_id", videoId));
   qparams.add(new BasicNameValuePair("fmt", "" + format));
-  URI uri = new URI("https://www.youtube.com/get_video_info?video_id=" + videoId +"&hl=en");
+  URI uri = new URI("https://www.youtube.com/get_video_info?video_id=" + videoID +"&el=detailpage&hl=en");
 
 
   CookieStore cookieStore = new BasicCookieStore();
@@ -688,13 +693,34 @@ URLConnection conn = new URL(link).openConnection();
         
     }
     
-    
+     private static BufferedImage resize(BufferedImage img, int height, int width) {
+        java.awt.Image tmp = img.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
+        BufferedImage resized = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = resized.createGraphics();
+        g2d.drawImage(tmp, 0, 0, null);
+        g2d.dispose();
+        return resized;
+    }
    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
         
+                
+                 try {
+            BufferedImage image =  ImageIO.read(getClass().getResourceAsStream("/images/youtube.png"));
+             BufferedImage resized = resize(image, 81, 86);
+            ImageView labelPicture = new ImageView();
+             labelPicture.setImage(SwingFXUtils.toFXImage(resized,null));
+           youtubeDownloaderLabel.setGraphic(labelPicture);
+           
+        
+       
+        
+        
+        } catch (Exception e) {
+        }
 
         
     }   

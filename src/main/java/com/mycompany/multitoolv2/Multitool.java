@@ -5,6 +5,7 @@
  */
 package com.mycompany.multitoolv2;
 
+import javafx.scene.image.Image;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,9 +23,11 @@ public class Multitool extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/FXMLDocument.fxml"));
         //stage.initStyle(StageStyle.UNDECORATED // Removes the topbar from the software
-        
+        stage.setTitle("YoutubeDownloader");
+        stage.getIcons().add(new Image(Multitool.class.getResourceAsStream("/images/youtube.png")));
         Scene scene = new Scene(root);
-        
+        stage.setResizable(false);
+        stage.sizeToScene();
         stage.setScene(scene);
         stage.show();
     }
